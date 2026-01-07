@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-black text-white;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    overflow-x: hidden;
+  }
+  
+  /* Smooth scroll with momentum */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-cyber-accent text-white font-semibold px-6 py-3 rounded-lg hover:bg-cyber-purpleDark transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-cyber-purple text-white font-semibold px-6 py-3 rounded-lg hover:bg-cyber-purpleDark transition-colors duration-200;
+  }
+  
+  .card {
+    @apply bg-gray-900 border border-purple-500/30 rounded-xl p-6 shadow-lg shadow-purple-500/10;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyber-accent focus:border-transparent;
+  }
+  
+  /* Scroll fade animations */
+  .fade-in {
+    animation: fadeIn 0.8s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Color dissolve effect */
+  .color-dissolve {
+    background: linear-gradient(
+      135deg,
+      rgba(0, 255, 136, 0.1) 0%,
+      rgba(0, 102, 255, 0.1) 50%,
+      rgba(124, 58, 237, 0.1) 100%
+    );
+    transition: background 0.3s ease;
+  }
+
+  .glow-text {
+    text-shadow: 0 0 5px currentColor;
+  }
+}
+
