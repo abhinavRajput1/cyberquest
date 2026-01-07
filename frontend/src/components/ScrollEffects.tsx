@@ -12,9 +12,9 @@ export const ScrollEffects = () => {
 
       if (overlayRef.current) {
         // Create color dissolving effect based on scroll position
-        const hue = (scrollPercent * 360) % 360;
+
         const opacity = Math.min(scrollPercent * 0.3, 0.3);
-        
+
         overlayRef.current.style.background = `linear-gradient(
           135deg,
           rgba(0, 255, 136, ${opacity * 0.5}) 0%,

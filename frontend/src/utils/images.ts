@@ -1,6 +1,6 @@
 // Image utility to use local images if available, otherwise fallback to Unsplash
 
-const getImagePath = (localPath: string, fallbackUrl: string): string => {
+const getImagePath = (localPath: string, _fallbackUrl: string): string => {
   // In production, you can check if the image exists
   // For now, we'll use a simple approach: try local first, fallback to URL
   // You can replace this with actual image existence checking if needed
