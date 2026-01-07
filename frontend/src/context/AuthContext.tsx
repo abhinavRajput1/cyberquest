@@ -1,16 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import { authService, User } from '../services/auth';
 
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  xp: number;
-  level: number;
-  badges: string[];
-  completedMissions?: number;
-  streak?: number;
-}
+
 
 interface AuthContextType {
   user: User | null;
@@ -34,10 +26,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     checkAuth();
   }, []);
 
+
   const checkAuth = async () => {
     try {
-      const response = await axios.get('/api/auth/me');
-      setUser(response.data.user);
+      const user = await authService.checkAuth();
+      setUser(user);
     } catch (error) {
       setUser(null);
     } finally {
@@ -46,17 +39,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const login = async (email: string, password: string) => {
-    const response = await axios.post('/api/auth/login', { email, password });
-    setUser(response.data.user);
+    const user = await authService.login(email, password);
+    setUser(user);
   };
 
   const signup = async (name: string, email: string, password: string) => {
-    const response = await axios.post('/api/auth/signup', { name, email, password });
-    setUser(response.data.user);
+    const user = await authService.signup(name, email, password);
+    setUser(user);
   };
 
   const logout = async () => {
-    await axios.post('/api/auth/logout');
+    await authService.logout();
     setUser(null);
   };
 
